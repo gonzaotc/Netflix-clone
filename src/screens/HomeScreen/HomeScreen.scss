@@ -1,0 +1,26 @@
+.homeScreen {
+  min-height: 100%;
+  width: 100%;
+  background-color: var(--dark-grey);
+  // border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  z-index: 5;
+}
+.banner {
+  z-index: 1;
+}
+.banner__fadeout {
+  z-index: 2;
+}
+.content{
+  z-index: 3;
+}
+.row{
+  z-index: 4;
+}
