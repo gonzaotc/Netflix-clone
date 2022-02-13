@@ -18,10 +18,11 @@
     // border: 2px solid blue;
     height: 100%;
     width: 92%;
+
+    filter: drop-shadow(1px 1px 20px rgba(1, 1, 1, 0.8))
+      drop-shadow(1px 1px 20px rgba(1, 1, 1, 0.8));
     .navbar__logo {
       height: 65px;
-      filter: drop-shadow(1px 1px 20px rgba(1, 1, 1, 0.8))
-        drop-shadow(1px 1px 20px rgba(1, 1, 1, 0.8));
       cursor: pointer;
     }
     .navbar__avatar {
