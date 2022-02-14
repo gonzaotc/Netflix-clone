@@ -31,7 +31,7 @@
         //   border: 2px solid pink;
         .slide__content {
           height: 100%;
-          width: 92%;
+          width: var(--content-width);
           // border: 2px solid blue;
           display: flex;
           align-items: center;
