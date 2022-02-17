@@ -18,6 +18,11 @@
     // border: 2px solid blue;
     height: 100%;
     width: var(--content-width);
+    color: var(--white);
+
+    a {
+      text-decoration: none;
+    }
 
     filter: drop-shadow(1px 1px 20px rgba(1, 1, 1, 0.8))
       drop-shadow(1px 1px 20px rgba(1, 1, 1, 0.8));

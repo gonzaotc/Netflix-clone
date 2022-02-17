@@ -1,0 +1,63 @@
+.loginScreen__hero__register {
+  height: 100%;
+  width: var(--content-width);
+  //   border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  h1 {
+    font-size: 3.4rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+  h2 {
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+  form {
+    height: 60px;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // border: 2px solid green;
+    input {
+      box-sizing: border-box;
+      padding: 0 0.75rem;
+      font-size: 1.1rem;
+      font-weight: 300;
+      height: 100%;
+      width: 100%;
+      border: 1px solid black;
+      outline: none;
+      background-color: var(--white);
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+    button {
+      box-sizing: border-box;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 300;
+      font-size: 1.8rem;
+      padding: 0 2rem;
+      height: 100%;
+      border: 1px solid black;
+      outline: none;
+      background-color: var(--red);
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+  }
+}

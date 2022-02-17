@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-
 import "./NavBar.scss";
+import { Link } from "react-router-dom";
+
 const NavBar = () => {
   const [show, handleShow] = useState(false);
 
@@ -23,16 +24,21 @@ const NavBar = () => {
   return (
     <nav className={`navbar ${show && "navbar__black"}`}>
       <div className="navbar__contents">
-        <img
-          className="navbar__logo"
-          src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
-          alt="Netflix logo"
-        />
-        <img
-          className="navbar__avatar"
-          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-          alt="netflix avatar icon"
-        />
+        <Link to="/">
+          <img
+            className="navbar__logo"
+            src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
+            alt="Netflix logo"
+          />
+        </Link>
+
+        <Link to="/profile">
+          <img
+            className="navbar__avatar"
+            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+            alt="netflix avatar icon"
+          />
+        </Link>
       </div>
     </nav>
   );

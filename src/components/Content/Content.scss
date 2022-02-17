@@ -27,15 +27,54 @@
       }
     }
   }
-  .largeRow{
-    h3{
+  .largeRow {
+    h3 {
       line-height: 1.5vw;
       font-size: 1.5vw;
+      color: var(--red);
     }
-    .swiper{
-      &-slide{
-        img{
+    .swiper {
+      &-slide {
+        img {
           width: calc(87.7vw / 7);
+        }
+      }
+    }
+  }
+  .customRow {
+    // border: 2px solid red;
+    h3 {
+      line-height: 1.5vw;
+      font-size: 1.5vw;
+      color: orange !important;
+    }
+    .swiper {
+      // border: 2px solid blue;
+      // height: 100% !important;
+      &-slide {
+        // border: 2px solid purple;
+        // height: 100% !important;
+        // color: red;
+        img {
+          height: 9.96vw;
+          // width: calc(87.7vw / 7);
+          object-fit: cover;
+          // border: 2px solid green;
+          // height: 100% !important;
+        }
+        .openMovieForm {
+          height: 9.96vw;
+          background-color: rgba(100, 100, 100, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--grey-opacity-less);
+          font-size: 4rem;
+          font-weight: 100;
+          svg:hover {
+            cursor: pointer;
+            color: var(--grey-opacity-more);
+          }
         }
       }
     }

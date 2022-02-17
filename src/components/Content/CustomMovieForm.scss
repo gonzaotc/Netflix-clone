@@ -1,0 +1,105 @@
+.newMovieForm__overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  // height: 440vh;
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(120, 120, 120, 0.4);
+
+  .loginScreen__hero__login {
+    background-color: rgba(1, 1, 1, 0.9);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4%;
+    width: 35%;
+    color: var(--white);
+    h1 {
+      font-size: 2.2rem;
+      align-self: flex-start;
+      margin-bottom: 1.8rem;
+    }
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      // border: 2px solid green;
+      .inputGroup {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // border: 2px solid red;
+        &__name {
+          flex: 5.3;
+          margin: 0;
+          margin-right: 1rem;
+        }
+        &__year {
+          margin: 0;
+          flex: 1;
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+          -moz-appearance: textfield; /* Firefox */
+        }
+        margin-bottom: 0.7rem;
+      }
+      input,
+      button {
+        width: 100%;
+        padding: 0;
+        border: none;
+        outline: none;
+        height: 45px;
+        border-radius: 4px;
+        font-size: 1.1rem;
+        font-weight: 300;
+      }
+      input {
+        padding: 0 1rem;
+        box-sizing: border-box;
+        margin: 0;
+        margin-bottom: 0.7rem;
+      }
+      button {
+        margin-top: 1rem;
+        height: 45px;
+        color: var(--white);
+        background-color: var(--red);
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin-bottom: 1.5rem;
+      }
+    }
+    .subscribeNow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 300;
+      p {
+        color: var(--grey-opacity-more);
+        font-size: 1.1rem;
+        margin-right: 0.5rem;
+      }
+      a {
+        font-size: 1.1rem;
+        color: var(--white);
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
