@@ -46,6 +46,14 @@
       cursor: pointer;
       margin-bottom: 0.9rem;
     }
+    .loadingButton {
+      background-color: var(--red-opacity);
+      cursor: default;
+      .loadingIcon {
+        font-size: 1.6rem;
+        color: var(--white-opacity);
+      }
+    }
     .login__extras {
       display: flex;
       align-items: center;

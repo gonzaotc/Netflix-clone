@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {!user && <LoginScreen xº />}
+        {!user && <LoginScreen />}
         {user && (
           <Routes>
             <Route path="/" element={<HomeScreen />} />

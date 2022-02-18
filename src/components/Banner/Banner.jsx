@@ -7,29 +7,8 @@ import "swiper/css/effect-fade";
 import "./Banner.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faCircleInfo, faTrophy, faMedal } from "@fortawesome/free-solid-svg-icons";
-import axios from "../../api/axios";
-import requests from "../../api/requests";
 
-
-const truncate = string => {
-  return string.length > 200 ? string.slice(0, 200) + "..." : string;
-};
-
-const Banner = () => {
-  const [bannerMovies, setBannerMovies] = useState([]);
-
-  useEffect(() => { 
-    async function fetchData() {
-      const request = await axios.get(requests.fetchNetflixOriginals);
-      const movies = request.data.results;
-      for (let movie of movies) {
-        movie.overview = truncate(movie.overview);
-      }
-      setBannerMovies(movies);
-      return request;
-    }
-    fetchData()
-  }, [])
+const Banner = ({ bannerMovies}) => {
 
   return (
     <div className="banner">
