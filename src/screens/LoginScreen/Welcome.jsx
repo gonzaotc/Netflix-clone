@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Register.scss";
+import "./Welcome.scss";
 
 const Welcome = ({ setSignIn, email, setEmail }) => {
   const handleStart = e => {
@@ -9,7 +9,7 @@ const Welcome = ({ setSignIn, email, setEmail }) => {
   };
 
   return (
-    <div className="loginScreen__hero__register">
+    <div className="loginScreen__hero__welcome">
       <h1>
         Películas y series ilimitadas <br /> y mucho más
       </h1>

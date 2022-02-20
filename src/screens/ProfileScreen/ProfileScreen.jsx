@@ -5,10 +5,10 @@ import { useSelector } from "react-redux";
 import NavBar from "../../components/NavBar/NavBar";
 import { selectUser } from "../../features/user/userSlice";
 import { auth } from "../../firebase";
+import Plans from "./Plans";
 
 import "./ProfileScreen.scss";
 const ProfileScreen = () => {
-
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
@@ -34,26 +34,7 @@ const ProfileScreen = () => {
           />
           <div className="profile__info">
             <p className="profile__info__email">{user.email}</p>
-            <h3 className="profile__info__plansTitle">Planes (Plan actual: premium)</h3>
-            <p className="profile__info__renewal">Renewal date: 04/03/2021</p>
-            <span className="profile__info__plan">
-              <span>
-                <span>Netflix Standard</span> <span>1080p</span>
-              </span>
-              <button>Suscribir</button>
-            </span>
-            <span className="profile__info__plan">
-              <span>
-                <span>Netflix Basic</span> <span>480p</span>
-              </span>
-              <button>Suscribir</button>
-            </span>
-            <span className="profile__info__plan">
-              <span>
-                <span>Netflix Premium</span> <span>4K+HDR</span>
-              </span>
-              <button className="buttonActual">Suscripcion actual</button>
-            </span>
+            <Plans />
             <button className="logoutButton" onClick={handleLogout}>
               Cerrar sesión
             </button>

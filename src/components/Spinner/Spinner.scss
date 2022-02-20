@@ -2,9 +2,22 @@
   position: absolute;
   height: 12vw;
   width: 12vw;
+  min-height: 120px;
+  min-width: 120px;
   //   background-color: white;
   border-radius: 50%;
+  animation: appear 2s linear;
 }
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .spinner span {
   position: absolute;
   top: 0;
@@ -27,9 +40,10 @@
   border-radius: 50%;
   box-shadow: 0 0 10px var(--red), 0 0 20px var(--red), 0 0 40px var(--red), 0 0 60px var(--red),
     0 0 80px var(--red), 0 0 100px var(--red);
+  transform: scale(calc(1 - 0.05 * var(--i)));
 
-  animation: animate 2s linear infinite;
-  animation-delay: calc(0.1s * var(--i));
+  animation: animate 1.5s ease-in-out infinite;
+  animation-delay: calc(0.075s * var(--i));
 }
 
 @keyframes animate {

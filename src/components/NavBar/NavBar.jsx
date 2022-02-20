@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./NavBar.scss";
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({ userIcon = true }) => {
   const [show, handleShow] = useState(false);
 
   const transitionNavBar = () => {
@@ -32,13 +32,15 @@ const NavBar = () => {
           />
         </Link>
 
-        <Link to="/profile">
-          <img
-            className="navbar__avatar"
-            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-            alt="netflix avatar icon"
-          />
-        </Link>
+        {userIcon && (
+          <Link to="/profile">
+            <img
+              className="navbar__avatar"
+              src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+              alt="netflix avatar icon"
+            />
+          </Link>
+        )}
       </div>
     </nav>
   );

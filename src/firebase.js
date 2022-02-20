@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore, collection, where, query } from "firebase/firestore";
 
 import { getAuth } from "firebase/auth";
 
@@ -21,6 +21,7 @@ const auth = getAuth();
 
 // collection ref
 const moviesCollection = collection(db, "movies");
+const productsCollection = query(collection(db, "products"), where("active", "==", true));
 
-export { moviesCollection, auth };
+export { moviesCollection, productsCollection, auth };
 export default db;

@@ -5,48 +5,28 @@ import Content from "../../components/Content/Content";
 import "./HomeScreen.scss";
 import Spinner from "../../components/Spinner/Spinner";
 
-import axios from "../../api/axios";
-import requests from "../../api/requests";
-
-const truncate = string => {
-  return string.length > 200 ? string.slice(0, 200) + "..." : string;
-};
-
 const HomeScreen = () => {
-  const [loading, setIsLoading] = useState(true);
-
-  const [bannerMovies, setBannerMovies] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const request = await axios.get(requests.fetchNetflixOriginals);
-        const movies = request.data.results;
-        for (let movie of movies) {
-          movie.overview = truncate(movie.overview);
-        }
-        setBannerMovies(movies);
-        setIsLoading(false);
-        return request;
-      } catch (error) {
-        console.log(error);
-        return error;
-      }
-    };
-    fetchData();
-  }, []);
+  const [loading, setIsLoading] = useState({
+    bannerLoading: true,
+    row1Loading: true,
+    row2Loading: true,
+    row3Loading: true,
+    row4Loading: true,
+  });
+  const allLoaded =
+    !loading.bannerLoading &&
+    !loading.row1Loading &&
+    !loading.row2Loading &&
+    !loading.row3Loading &&
+    !loading.row4Loading;
 
   return (
     <div className="homeScreen">
       <>
-        {loading && <Spinner />}
-        {!loading && (
-          <>
-            <NavBar />
-            <Banner bannerMovies={bannerMovies} />
-            <Content />
-          </>
-        )}
+        {!allLoaded && <Spinner />}
+        <NavBar />
+        <Banner loading={loading} setIsLoading={setIsLoading} />
+        <Content loading={loading} setIsLoading={setIsLoading} />
       </>
     </div>
   );

@@ -1,12 +1,18 @@
 .loginScreen__hero__login {
+  position: absolute;
+  top: 41%;
+  transform: translateY(-50%);
+  align-self: center;
+  justify-self: center;
   background-color: rgba(1, 1, 1, 0.7);
   border-radius: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5%;
+  padding: 4.2% 5.2%;
   width: 35%;
+  // border: 2px solid red;
   h1 {
     font-size: 2.2rem;
     align-self: flex-start;
@@ -33,9 +39,10 @@
     input {
       padding: 0 1rem;
       box-sizing: border-box;
-      margin-bottom: 1rem;
+      margin-top: 0.9rem;
+      margin-bottom: 0.35rem;
       &:nth-of-type(2) {
-        margin-bottom: 2.3rem;
+        // margin-bottom: 2.3rem;
       }
     }
     button {
@@ -44,7 +51,8 @@
       background-color: var(--red);
       font-size: 1.1rem;
       cursor: pointer;
-      margin-bottom: 0.9rem;
+      margin-top: 1.8rem;
+      margin-bottom: 0.35rem;
     }
     .loadingButton {
       background-color: var(--red-opacity);
@@ -54,14 +62,21 @@
         color: var(--white-opacity);
       }
     }
+    .errorMessage{
+      position: relative;
+      color: red;
+      font-weight: 300;
+      align-self: flex-start;
+    }
     .login__extras {
+      margin-top: 0.8rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
       font-size: 0.9rem;
       font-weight: 300;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
       color: var(--grey);
       &__content {
         display: flex;

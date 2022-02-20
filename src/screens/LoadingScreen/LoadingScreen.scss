@@ -1,0 +1,10 @@
+.loadingScreen {
+  min-height: 100%;
+  width: 100%;
+  background-color: var(--dark-grey);
+  // border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
