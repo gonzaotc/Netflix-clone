@@ -19,6 +19,7 @@
     height: 100%;
     width: var(--content-width);
     color: var(--white);
+    position: relative;
 
     a {
       text-decoration: none;
@@ -30,7 +31,50 @@
       height: 65px;
       cursor: pointer;
     }
-    
+
+    .subscriptionMessage {
+      position: absolute;
+      width: 260px;
+      top: 60px;
+      padding: 1rem 1.2rem;
+      background: rgba(100, 100, 100, 0.3);
+      border-radius: 2px;
+      box-shadow: 2px 2px 10px rgba(1, 1, 1, 1);
+      font-size: 1.1rem;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      color: var(--white-opacity);
+      div {
+        display: flex;
+        .icon {
+          // border: 2px solid red;
+          margin-right: 0.7rem;
+          color: var(--white-opacity);
+        }
+      }
+      animation: slideDown 3.1s ease-in;
+    }
+
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        top: 50px;
+      }
+      12% {
+        opacity: 1;
+        top: 60px;
+      }
+      84% {
+        opacity: 1;
+        top: 60px;
+      }
+      100% {
+        opacity: 0;
+        top: 70px;
+      }
+    }
+
     .navbar__avatar {
       height: 45px;
       cursor: pointer;

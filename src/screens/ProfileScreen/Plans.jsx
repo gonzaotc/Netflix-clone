@@ -1,30 +1,33 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { addDoc, collection, getDoc, getDocs, onSnapshot } from "firebase/firestore";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../features/user/userSlice";
+import { selectRole, selectUser, userActions } from "../../features/user/userSlice";
 import db, { productsCollection } from "../../firebase";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const Plans = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [arePlansLoading, setArePlansLoading] = useState(true);
+  const [isStripeLoading, setIsStripeLoading] = useState(false);
   const [products, setProducts] = useState([]);
-  const [subscription, setSubscription] = useState(null);
+
+  const buttonRef = useRef(null);
+  // const [subscription, setSubscription] = useState(null);
   const user = useSelector(selectUser);
 
-  useEffect(() => {
-    getDocs(collection(db, `customers/${user.uid}/subscriptions`)).then(querySnapshot => {
-      querySnapshot.forEach(async subscription => {
-        setSubscription({
-          role: subscription.data().role,
-          current_period_end: subscription.data().current_period_end.seconds,
-          current_period_start: subscription.data().current_period_start.seconds,
-        });
-      });
-    });
-  }, []);
+  // useEffect(() => {
+  //   getDocs(collection(db, `customers/${user.uid}/subscriptions`)).then(querySnapshot => {
+  //     querySnapshot.forEach(async subscription => {
+  //       setSubscription({
+  //         role: subscription.data().role,
+  //         current_period_end: subscription.data().current_period_end.seconds,
+  //         current_period_start: subscription.data().current_period_start.seconds,
+  //       });
+  //     });
+  //   });
+  // }, []);
 
   useEffect(() => {
     getDocs(productsCollection).then(querySnapshot => {
@@ -40,11 +43,15 @@ const Plans = () => {
         });
       });
       setProducts(products);
+      setTimeout(() => {
+        setArePlansLoading(false);
+      }, 1);
+      //
     });
   }, []);
 
-  const handleLoadCheckout = async priceId => {
-    setIsLoading(true);
+  const handleLoadCheckout = async (planId, priceId) => {
+    setIsStripeLoading(planId);
     const docRef = await addDoc(collection(db, `customers/${user.uid}/checkout_sessions`), {
       price: priceId,
       success_url: window.location.origin,
@@ -78,7 +85,6 @@ const Plans = () => {
           "pk_test_51KUxrdJfi0vSrKNfqDOsQg0IGkPYRZfmwXl64kTLeaEPHJsyY2aj2mfPAC5SV1LUBjZdG0OSgqKW4D9dqDGRpiNY00uC9SuUzF"
         );
         stripe.redirectToCheckout({ sessionId });
-        // setIsLoading(false);
       }
     });
   };
@@ -87,38 +93,46 @@ const Plans = () => {
     <>
       <div className="profile__info__plans">
         <h3 className="profile__info__plans__title">Planes</h3>
-        {subscription && (
-          <h3 className="profile__info__plans__actualPlan">(Plan actual: {subscription?.role})</h3>
+        {user.current_perior_end && (
+          <h3 className="profile__info__plans__actualPlan">(Plan actual: {user.role})</h3>
         )}
       </div>
-      {subscription && (
+      {user.current_perior_end && (
         <p className="profile__info__renewal">
-          Renewal date: {new Date(subscription?.current_period_end * 1000).toLocaleDateString()}
+          Renewal date: {new Date(user.current_period_end * 1000).toLocaleDateString()}
         </p>
       )}
-      {Object.entries(products).map(([planId, planData]) => {
-        const isCurrentPackage = planData.name?.toLowerCase().includes(subscription?.role);
-        return (
-          <span className="profile__info__plan" key={planId}>
-            <span>
-              <span>{planData.name}</span> <span>{planData.description}</span>
+      {!arePlansLoading &&
+        Object.entries(products).map(([planId, planData]) => {
+          const isCurrentPackage = planData.name?.toLowerCase().includes(user.role);
+          return (
+            <span className="profile__info__plan" key={planId}>
+              <span>
+                <span>{planData.name}</span> <span>{planData.description}</span>
+              </span>
+              {!(isStripeLoading === planId) && (
+                <button
+                  className={isCurrentPackage ? "buttonActual" : "button"}
+                  onClick={() =>
+                    !isCurrentPackage && handleLoadCheckout(planId, planData?.prices?.priceId)
+                  }
+                >
+                  {!isCurrentPackage ? "Suscribir" : "Plan actual"}
+                </button>
+              )}
+              {isStripeLoading === planId && (
+                <button className="loadingButton">
+                  <FontAwesomeIcon className="loadingIcon" icon={faSpinner} pulse />
+                </button>
+              )}
             </span>
-            {(!isLoading || (isLoading && isCurrentPackage)) && (
-              <button
-                className={isCurrentPackage ? "buttonActual" : "button"}
-                onClick={() => !isCurrentPackage && handleLoadCheckout(planData?.prices?.priceId)}
-              >
-                {!isCurrentPackage ? "Suscribir" : "Plan actual"}
-              </button>
-            )}
-            {isLoading && !isCurrentPackage &&  (
-              <button className="loadingButton">
-                <FontAwesomeIcon className="loadingIcon" icon={faSpinner} pulse />
-              </button>
-            )}
-          </span>
-        );
-      })}
+          );
+        })}
+      {arePlansLoading && (
+        <div className="loadingPlans">
+          <FontAwesomeIcon className="loadingIcon" icon={faSpinner} pulse />
+        </div>
+      )}
     </>
   );
 };

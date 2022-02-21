@@ -115,3 +115,16 @@
     }
   }
 }
+
+.loadingPlans{
+  //  border: 2px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 11.5rem;
+  margin-bottom: 1rem;
+  .loadingIcon{
+    font-size: 3rem;
+    opacity: 0.4;
+  }
+}
