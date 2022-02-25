@@ -5,6 +5,7 @@ import axios from "../../api/axios";
 import { moviesCollection } from "../../firebase";
 import { getDocs, onSnapshot, orderBy, query, limit, doc } from "firebase/firestore";
 import OpenMovieForm from "./OpenMovieForm";
+import MoviePreview from "./MoviePreview";
 
 const Row = ({
   title,
@@ -83,6 +84,7 @@ const Row = ({
             modules={[Autoplay]}
             slidesPerView={isLargeRow ? 7 : 5}
             spaceBetween={isLargeRow ? 7 : 7}
+            zoom
             speed={1250}
             loop={isCustomRow ? false : true}
             // autoplay={{ delay: RANDOM_TIME, disableOnInteraction: false }}
@@ -96,9 +98,10 @@ const Row = ({
               movie =>
                 ((isLargeRow && movie.poster_path) || (!isLargeRow && movie.backdrop_path)) && (
                   <SwiperSlide key={movie.id}>
-                    <img
+                    <MoviePreview
+                      movie={movie}
                       src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
-                      alt={`${movie.name}`}
+                      alt={`${movie.name || movie.title || movie.original_title}`}
                     />
                   </SwiperSlide>
                 )

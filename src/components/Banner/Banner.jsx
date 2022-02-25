@@ -37,7 +37,7 @@ const Banner = ({ loading, setIsLoading }) => {
         setTimeout(() => {
           setIsLoading(state => ({ ...state, bannerLoading: false }));
           console.log("banner cargado!", new Date().getMilliseconds());
-        }, 3000);
+        }, 1);
         return request;
       } catch (error) {
         console.log(error);
