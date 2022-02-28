@@ -58,7 +58,7 @@
             cursor: default !important;
         }
         .votesAnimation {
-          animation: animateVotes 0.3s linear;
+          animation: animateVotes 0.26s linear;
         }
       }
       &__date {
@@ -88,7 +88,7 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(1.25);
+    transform: scale(1.15);
     color: rgba(50,255,50,0.7);
   }
   100% {

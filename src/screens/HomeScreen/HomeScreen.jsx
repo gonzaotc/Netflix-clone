@@ -6,27 +6,15 @@ import "./HomeScreen.scss";
 import Spinner from "../../components/Spinner/Spinner";
 
 const HomeScreen = () => {
-  const [loading, setIsLoading] = useState({
-    bannerLoading: true,
-    row1Loading: true,
-    row2Loading: true,
-    row3Loading: true,
-    row4Loading: true,
-  });
-  const allLoaded =
-    !loading.bannerLoading &&
-    !loading.row1Loading &&
-    !loading.row2Loading &&
-    !loading.row3Loading &&
-    !loading.row4Loading;
+  const [isBannerLoading, setIsBannerLoading] = useState(true);
 
   return (
     <div className="homeScreen">
       <>
-        {!allLoaded && <Spinner />}
+        {isBannerLoading && <Spinner />}
         <NavBar />
-        <Banner loading={loading} setIsLoading={setIsLoading} />
-        <Content loading={loading} setIsLoading={setIsLoading} />
+        <Banner isBannerLoading={isBannerLoading} setIsBannerLoading={setIsBannerLoading} />
+        <Content isBannerLoading={isBannerLoading} />
       </>
     </div>
   );

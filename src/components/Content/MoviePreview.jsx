@@ -25,7 +25,7 @@ const MoviePreview = ({ src, alt, movie }) => {
   };
 
   if (!movie.release_date && !movie.first_air_date) {
-    console.log(movie);
+    // console.log(movie);
   }
 
   let movieName = movie.name || movie.title || movie.original_title;

@@ -15,15 +15,8 @@ const truncate = string => {
   return string.length > 200 ? string.slice(0, 200) + "..." : string;
 };
 
-const Banner = ({ loading, setIsLoading }) => {
+const Banner = ({ isBannerLoading, setIsBannerLoading }) => {
   const [bannerMovies, setBannerMovies] = useState([]);
-
-  const allLoaded =
-    !loading.bannerLoading &&
-    !loading.row1Loading &&
-    !loading.row2Loading &&
-    !loading.row3Loading &&
-    !loading.row4Loading;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,9 +28,9 @@ const Banner = ({ loading, setIsLoading }) => {
         }
         setBannerMovies(movies);
         setTimeout(() => {
-          setIsLoading(state => ({ ...state, bannerLoading: false }));
+          setIsBannerLoading(false);
           console.log("banner cargado!", new Date().getMilliseconds());
-        }, 1);
+        }, 3000);
         return request;
       } catch (error) {
         console.log(error);
@@ -49,7 +42,7 @@ const Banner = ({ loading, setIsLoading }) => {
 
   return (
     <>
-      {allLoaded && (
+      {!isBannerLoading && (
         <div className="banner">
           <Swiper
             modules={[Autoplay, EffectFade]}
