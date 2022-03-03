@@ -1,0 +1,71 @@
+.avatarPopUp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  //   border: 2px solid green;
+  & > img {
+    height: 40px;
+    border-radius: 2px;
+    cursor: pointer;
+    // border: 2px solid red;
+  }
+  & > .icon {
+    font-size: 1rem;
+    // border: 2px solid red;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+  }
+  .pathSaver {
+    position: absolute;
+    top: 40px;
+    height: 20px;
+    width: 90px;
+    right: 0;
+    //  background-color: rgba(255, 1, 1, 0.7);
+    .icon {
+      position: relative;
+      left: 28px;
+      top: 7.5px;
+      font-size: 1.2rem;
+      //   color: black;
+    }
+  }
+  .popUp {
+    position: absolute;
+    height: 400px;
+    width: 200px;
+    top: 60px;
+    right: 0;
+    background-color: rgba(1, 1, 1, 0.82);
+    border-radius: 4px;
+    animation: popUpAppear 0.15s linear;
+  }
+  .popUpDissapear {
+    animation: popUpDissappear 0.15s linear;
+  }
+  .icon {
+    transform: rotate(0);
+    transition: all 0.3s;
+  }
+  .iconRotateAnimation {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes popUpAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes popUpDissappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

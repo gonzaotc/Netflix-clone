@@ -7,7 +7,7 @@ import './LoadingScreen.scss'
 const LoadingScreen = () => {
   return (
     <div className="loadingScreen">
-      <NavBar userIcon={false} />
+      <NavBar includeAvatar={false} />
       <Spinner />
     </div>
   );

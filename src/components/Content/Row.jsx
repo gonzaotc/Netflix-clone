@@ -18,8 +18,8 @@ const Row = ({
   rowNumber,
 }) => {
   let base_url = `${isCustomRow ? "" : "https://image.tmdb.org/t/p/original/"}`;
-  // const loadTime = 5000 + rowNumber * 750;
-  const loadTime = 99999
+  const loadTime = 5000 + rowNumber * 750;
+  // const loadTime = 99999
 
   const [movies, setMovies] = useState(null);
 

@@ -5,8 +5,9 @@ import { selectUser } from "../../features/user/userSlice";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import AvatarPopUp from "../AvatarPopUp/AvatarPopUp";
 
-const NavBar = ({ userIcon = true }) => {
+const NavBar = ({ includeAvatar = true }) => {
   const [showNavbarBackground, showShowNavbarBackground] = useState(false);
   const [showSubscriptionMessage, setShowSubscriptionMessage] = useState(false);
   const user = useSelector(selectUser);
@@ -66,14 +67,8 @@ const NavBar = ({ userIcon = true }) => {
           </div>
         )}
 
-        {userIcon && (
-          <Link to="/profile">
-            <img
-              className="navbar__avatar"
-              src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-              alt="netflix avatar icon"
-            />
-          </Link>
+        {includeAvatar && (
+          <AvatarPopUp />
         )}
       </div>
     </nav>
