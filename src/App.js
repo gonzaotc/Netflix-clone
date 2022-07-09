@@ -20,7 +20,6 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     // Triggers if auth state change ->login, register, logout
-
     const unsubscribe = onAuthStateChanged(auth, async userAuth => {
       setLoadingUser(true);
       //if userAuth is not undefined, is logged.

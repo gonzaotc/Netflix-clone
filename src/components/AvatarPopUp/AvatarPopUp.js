@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,6 +8,7 @@ const AvatarPopUp = () => {
   const [showPopUp, setShowPopUp] = useState(false);
   const [isPopUpDissapearing, setIsPopUpDissapearing] = useState(false);
 
+  const navigate = useNavigate();
   return (
     <div
       className="avatarPopUp"
@@ -20,6 +21,9 @@ const AvatarPopUp = () => {
           setIsPopUpDissapearing(false);
           setShowPopUp(false);
         }, 150);
+      }}
+      onClick={() => {
+        navigate("/profile");
       }}
     >
       <img
