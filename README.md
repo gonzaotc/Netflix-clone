@@ -15,4 +15,4 @@
  - Managing the payments with Stripe, giving membership and access after receiving the money, checking if the user has an active membership, was all a tough challenge at the moment that I built this project, but I learnead a ton doing it. I'm gratefull with myself for pushing me foward on this project. <br>
  - I tried to build the UI the most similar possible to the real product, and that sky-rocked my CSS abilities at that time. <br>
  
- The demo it's not more live, but DM me and I will show you it :)
+ After 5 months : The demo it's not more live, but DM me and I will show you it :)
